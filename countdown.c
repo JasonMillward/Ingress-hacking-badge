@@ -113,23 +113,23 @@ void setup(){
   
   countDown();
   
-  set_sleep_mode (SLEEP_MODE_PWR_DOWN);  
-  sleep_enable();
-  sleep_cpu ();
-  sleep_disable();
 }
 
 void loop(){
    // sleep forever
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
+  sleep_enable();
+  sleep_cput();
+  sleep_disable();
 }
 
 void countDown() {
-  displayLED(6); 
-  displayLED(5);
-  displayLED(4);
-  displayLED(3);
-  displayLED(2);
-  displayLED(1);
+    displayLED(6); 
+    displayLED(5);
+    displayLED(4);
+    displayLED(3);
+    displayLED(2);
+    displayLED(1);
 }
 
 void displayLED( int thing ) {
