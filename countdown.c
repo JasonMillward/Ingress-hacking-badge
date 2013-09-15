@@ -55,13 +55,17 @@ void loop() {
     // sleep forever
     PRR |= (1 << PRTIM1) | (1 << PRTIM0) | (1 << PRUSI) | (1 << PRADC);
     set_sleep_mode(SLEEP_MODE_PWR_DOWN); 
-    cli(); 
+     
     sleep_enable(); 
-    sei(); 
+
+    disable_adc();
+    disable_ac();
+    disable_watchdog();
     sleep_cpu(); 
+    disable_brown_out_detector();
     sleep_disable(); 
     sleep_bod_disable(); 
-    sei(); 
+     
 }
 
 void startAnimation() {
