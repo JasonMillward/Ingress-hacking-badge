@@ -96,50 +96,54 @@ void countDown() {
 void displayLED( int ledCount ) {
     
     for( int i = 0; i < displayDelay; i++ ) {
-    
-    if( ledCount > 5 ) {
-      charlieplex.charlieWrite(led6, HIGH);
-      delay( pwmDelay );
-      charlieplex.clear();
-    } else {
-      delay( pwmDelay );
-    }
+        
+        if( ledCount > 5 ) {
+            charlieplex.charlieWrite(led6, HIGH);
+            delay( pwmDelay );
+            charlieplex.clear();
+        } else {
+            delay( pwmDelay );
+        }
 
-    if(ledCount>4) {  
-      charlieplex.charlieWrite(led5, HIGH);
-      delay(pwmDelay);
-      charlieplex.clear();
-    } else {
-      delay(pwmDelay);
+        if( ledCount > 4 ) {  
+            charlieplex.charlieWrite(led5, HIGH);
+            delay( pwmDelay );
+            charlieplex.clear();
+        } else {
+            delay( pwmDelay );
+        }
+
+        if( ledCount > 3 ) {
+            charlieplex.charlieWrite(led4, HIGH);
+            delay( pwmDelay );
+            charlieplex.clear();
+        } else {
+            delay( pwmDelay );
+        }
+
+        if( ledCount > 2 ) {
+            charlieplex.charlieWrite(led3, HIGH);
+            delay( pwmDelay );
+            charlieplex.clear();
+        } else {
+            delay( pwmDelay );
+        }
+
+        if( ledCount > 1 ) {
+            charlieplex.charlieWrite(led2, HIGH);
+            delay( pwmDelay );
+            charlieplex.clear();
+        } else {
+            delay( pwmDelay );
+        }
+
+        if( ledCount > 0 ) {
+            charlieplex.charlieWrite(led1, HIGH);
+            delay( pwmDelay );
+            charlieplex.clear();
+        } else {
+            delay( pwmDelay );
+        }
     }
-    if(ledCount>3) {
-      charlieplex.charlieWrite(led4, HIGH);
-      delay(pwmDelay);
-      charlieplex.clear();
-    } else {
-      delay(pwmDelay);
-    }
-    if(ledCount>2) {
-      charlieplex.charlieWrite(led3, HIGH);
-      delay(pwmDelay);
-      charlieplex.clear();
-    } else {
-      delay(pwmDelay);
-    }
-    if(ledCount>1) {
-      charlieplex.charlieWrite(led2, HIGH);
-      delay(pwmDelay);
-      charlieplex.clear();
-    } else {
-      delay(pwmDelay);
-    }
-    if(ledCount>0) {
-      charlieplex.charlieWrite(led1, HIGH);
-      delay(pwmDelay);
-      charlieplex.clear();
-    } else {
-      delay(pwmDelay);
-    }
-  }
   
 }
