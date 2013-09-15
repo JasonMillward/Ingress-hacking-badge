@@ -94,9 +94,7 @@ void countDown() {
 }
 
 void displayLED( int ledCount ) {
-    
-    for( int i = 0; i < displayDelay; i++ ) {
-        
+    for( int i = 0; i < displayDelay; i++ ) {   
         if( ledCount > 5 ) {
             charlieplex.charlieWrite(led6, HIGH);
             delay( pwmDelay );
@@ -144,6 +142,5 @@ void displayLED( int ledCount ) {
         } else {
             delay( pwmDelay );
         }
-    }
-  
+    }  
 }
