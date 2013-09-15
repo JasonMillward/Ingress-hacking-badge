@@ -36,7 +36,7 @@ charliePin led5 = { 2 , 1 };
 charliePin led6 = { 1 , 0 };
 
 
-void setup(){
+void setup() {
 
     // Start the circular led animation
     startAnimation();  
@@ -46,8 +46,7 @@ void setup(){
   
 }
 
-void loop(){
-
+void loop() {
    // sleep forever
    set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
    sleep_enable();
@@ -59,29 +58,28 @@ void startAnimation() {
     int delSpin = 50;
     
     for( int i = 3; i < displayDelay; i-- ) {
-
       charlieplex.charlieWrite(led1, HIGH);
-      delay(delSpin);
+      delay( delSpin );
       charlieplex.clear();
 
       charlieplex.charlieWrite(led2, HIGH);
-      delay(delSpin);
+      delay( delSpin );
       charlieplex.clear();
       
       charlieplex.charlieWrite(led3, HIGH);
-      delay(delSpin);
+      delay( delSpin );
       charlieplex.clear();
       
       charlieplex.charlieWrite(led4, HIGH);
-      delay(delSpin);
+      delay( delSpin );
       charlieplex.clear();
       
       charlieplex.charlieWrite(led5, HIGH);
-      delay(delSpin);
+      delay( delSpin );
       charlieplex.clear();
       
       charlieplex.charlieWrite(led6, HIGH);
-      delay(delSpin);
+      delay( delSpin );
       charlieplex.clear();
        
     }
