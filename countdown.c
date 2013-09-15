@@ -124,6 +124,7 @@ void loop(){
 }
 
 void countDown() {
+
     displayLED(6); 
     displayLED(5);
     displayLED(4);
@@ -133,16 +134,18 @@ void countDown() {
 }
 
 void displayLED( int thing ) {
-  int i = 0;
-  for( i=0;i<displayDelay;i++) {
+    int i = 0;
     
-    if(thing>5) {
+    for( i = 0; i < displayDelay; i++ ) {
+    
+    if( thing > 5 ) {
       charlieplex.charlieWrite(led6, HIGH);
-      delay(pwmDelay);
+      delay( pwmDelay );
       charlieplex.clear();
     } else {
-      delay(pwmDelay);
+      delay( pwmDelay );
     }
+
     if(thing>4) {  
       charlieplex.charlieWrite(led5, HIGH);
       delay(pwmDelay);
