@@ -53,21 +53,15 @@ void setup() {
 
 void loop() {
     // sleep forever
-
-    MCUCR &= ~(_BV(ISC01) | _BV(ISC00));
-    ACSR |= _BV(ACD);
-    ADCSRA &= ~_BV(ADEN); 
-    set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
-    sleep_enable();
-
-
-    mcucr1 = MCUCR | _BV(BODS) | _BV(BODSE);  //turn off the brown-out detector
-    mcucr2 = mcucr1 & ~_BV(BODSE);
-    MCUCR = mcucr1;
-    MCUCR = mcucr2;
-
-    sleep_cput();
-    sleep_disable();
+    PRR |= (1 << PRTIM1) | (1 << PRTIM0) | (1 << PRUSI) | (1 << PRADC);
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN); 
+    cli(); 
+    sleep_enable(); 
+    sei(); 
+    sleep_cpu(); 
+    sleep_disable(); 
+    sleep_bod_disable(); 
+    sei(); 
 }
 
 void startAnimation() {
@@ -158,3 +152,22 @@ void displayLED( int ledCount ) {
         }
     }  
 }
+
+void disable_adc() { 
+    cbi(ADCSRA,ADEN); 
+}    
+
+void disable_ac() { 
+    sbi(ACSR,ACD); 
+} 
+
+void disable_watchdog() { 
+    cbi(WDTCR,WDIE); 
+} 
+
+void disable_brown_out_detector() { 
+    mcucr1 = MCUCR | _BV(BODS) | _BV(BODSE); 
+    mcucr2 = mcucr1 & ~_BV(BODSE); 
+    MCUCR = mcucr1; 
+    MCUCR = mcucr2; 
+} 
