@@ -53,19 +53,19 @@ void setup() {
 
 void loop() {
     // sleep forever
-    PRR |= (1 << PRTIM1) | (1 << PRTIM0) | (1 << PRUSI) | (1 << PRADC);
-    set_sleep_mode(SLEEP_MODE_PWR_DOWN); 
-     
-    sleep_enable(); 
+    ADCSRA &= ~(1<<ADEN);                       // Turn off ADC
+    ACSR |= _BV(ACD);                           // Disable the analog comparator
+    MCUCR |= _BV(BODS) | _BV(BODSE);            // Turn off the brown-out detector
 
-    disable_adc();
-    disable_ac();
-    disable_watchdog();
-    sleep_cpu(); 
-    disable_brown_out_detector();
-    sleep_disable(); 
-    sleep_bod_disable(); 
+    PRR |= (1 << PRTIM1) | (1 << PRTIM0) | (1 << PRUSI) | (1 << PRADC);
+
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);        // Do a complete power-down
      
+    sleep_enable();                             // Enable sleep mode
+    
+    sleep_cpu();                                // Go to sleep 
+    
+    sleep_disable();                            // Disable sleep mode for safety
 }
 
 void startAnimation() {
