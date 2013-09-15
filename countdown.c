@@ -19,7 +19,12 @@ const int ledpin3 = 0;
 const int pwmDelay = 1;
 const int displayDelay = 5350;
 
-#define NUMBER_OF_PINS 3
+uint8_t mcucr1, mcucr2;
+
+#define NUMBER_OF_PINS  3
+#define BODS            7
+#define BODSE           2
+
 
 //define pins in the order you want to adress them
 byte pins[] = {ledpin1, ledpin2, ledpin3};
@@ -47,11 +52,22 @@ void setup() {
 }
 
 void loop() {
-   // sleep forever
-   set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
-   sleep_enable();
-   sleep_cput();
-   sleep_disable();
+    // sleep forever
+
+    MCUCR &= ~(_BV(ISC01) | _BV(ISC00));
+    ACSR |= _BV(ACD);
+    ADCSRA &= ~_BV(ADEN); 
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
+    sleep_enable();
+
+
+    mcucr1 = MCUCR | _BV(BODS) | _BV(BODSE);  //turn off the brown-out detector
+    mcucr2 = mcucr1 & ~_BV(BODSE);
+    MCUCR = mcucr1;
+    MCUCR = mcucr2;
+
+    sleep_cput();
+    sleep_disable();
 }
 
 void startAnimation() {
