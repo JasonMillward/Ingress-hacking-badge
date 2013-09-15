@@ -124,21 +124,16 @@ void loop(){
 }
 
 void countDown() {
-
-    displayLED(6); 
-    displayLED(5);
-    displayLED(4);
-    displayLED(3);
-    displayLED(2);
-    displayLED(1);
+    for( int i = 6; i < displayDelay; i-- ) {
+        displayLED(i);     
+    }
 }
 
-void displayLED( int thing ) {
-    int i = 0;
+void displayLED( int ledCount ) {
     
-    for( i = 0; i < displayDelay; i++ ) {
+    for( int i = 0; i < displayDelay; i++ ) {
     
-    if( thing > 5 ) {
+    if( ledCount > 5 ) {
       charlieplex.charlieWrite(led6, HIGH);
       delay( pwmDelay );
       charlieplex.clear();
@@ -146,35 +141,35 @@ void displayLED( int thing ) {
       delay( pwmDelay );
     }
 
-    if(thing>4) {  
+    if(ledCount>4) {  
       charlieplex.charlieWrite(led5, HIGH);
       delay(pwmDelay);
       charlieplex.clear();
     } else {
       delay(pwmDelay);
     }
-    if(thing>3) {
+    if(ledCount>3) {
       charlieplex.charlieWrite(led4, HIGH);
       delay(pwmDelay);
       charlieplex.clear();
     } else {
       delay(pwmDelay);
     }
-    if(thing>2) {
+    if(ledCount>2) {
       charlieplex.charlieWrite(led3, HIGH);
       delay(pwmDelay);
       charlieplex.clear();
     } else {
       delay(pwmDelay);
     }
-    if(thing>1) {
+    if(ledCount>1) {
       charlieplex.charlieWrite(led2, HIGH);
       delay(pwmDelay);
       charlieplex.clear();
     } else {
       delay(pwmDelay);
     }
-    if(thing>0) {
+    if(ledCount>0) {
       charlieplex.charlieWrite(led1, HIGH);
       delay(pwmDelay);
       charlieplex.clear();
