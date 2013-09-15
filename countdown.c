@@ -38,80 +38,9 @@ charliePin led6 = { 1 , 0 };
 
 void setup(){
 
-  int delSpin = 50;
-  charlieplex.charlieWrite(led1, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-
-  charlieplex.charlieWrite(led2, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led3, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led4, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led5, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led6, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led1, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-
-  charlieplex.charlieWrite(led2, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led3, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led4, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led5, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led6, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led1, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-
-  charlieplex.charlieWrite(led2, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led3, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led4, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led5, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  charlieplex.charlieWrite(led6, HIGH);
-  delay(delSpin);
-  charlieplex.clear();
-  
-  countDown();
+    // Start
+    startAnimation();  
+    countDown();
   
 }
 
@@ -121,6 +50,38 @@ void loop(){
   sleep_enable();
   sleep_cput();
   sleep_disable();
+}
+
+void startAnimation() {
+    int delSpin = 50;
+    
+    for( int i = 3; i < displayDelay; i-- ) {
+
+      charlieplex.charlieWrite(led1, HIGH);
+      delay(delSpin);
+      charlieplex.clear();
+
+      charlieplex.charlieWrite(led2, HIGH);
+      delay(delSpin);
+      charlieplex.clear();
+      
+      charlieplex.charlieWrite(led3, HIGH);
+      delay(delSpin);
+      charlieplex.clear();
+      
+      charlieplex.charlieWrite(led4, HIGH);
+      delay(delSpin);
+      charlieplex.clear();
+      
+      charlieplex.charlieWrite(led5, HIGH);
+      delay(delSpin);
+      charlieplex.clear();
+      
+      charlieplex.charlieWrite(led6, HIGH);
+      delay(delSpin);
+      charlieplex.clear();
+       
+    }
 }
 
 void countDown() {
