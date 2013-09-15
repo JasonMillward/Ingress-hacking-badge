@@ -38,18 +38,21 @@ charliePin led6 = { 1 , 0 };
 
 void setup(){
 
-    // Start
+    // Start the circular led animation
     startAnimation();  
+
+    // Count down ~5 minutes
     countDown();
   
 }
 
 void loop(){
+
    // sleep forever
-  set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
-  sleep_enable();
-  sleep_cput();
-  sleep_disable();
+   set_sleep_mode(SLEEP_MODE_PWR_DOWN);  
+   sleep_enable();
+   sleep_cput();
+   sleep_disable();
 }
 
 void startAnimation() {
